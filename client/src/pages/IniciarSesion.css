@@ -1,0 +1,79 @@
+.pagina-inicio-sesion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #f6f8fd 0%, #f1f5f9 100%);
+}
+
+.tarjeta-inicio-sesion {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.cabecera-inicio-sesion h2 {
+  font-size: 1.875rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cabecera-inicio-sesion p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.formulario-inicio-sesion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.grupo-entrada {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icono-entrada {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-secondary);
+}
+
+.con-icono {
+  padding-left: 3rem !important;
+}
+
+.campo-entrada {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.campo-entrada:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-block {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.mensaje-error {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #fca5a5;
+}
