@@ -187,11 +187,11 @@ const PanelAdministrador = () => {
                 </div>
                 <div className="grupo-formulario">
                   <label>Latitud (Google Maps)</label>
-                  <input type="number" step="any" name="latitud" className="campo-entrada" value={datosFormulario.latitud} onChange={manejarCambioEntrada} />
+                  <input type="text" name="latitud" className="campo-entrada" placeholder="Ej: -34.603722" value={datosFormulario.latitud} onChange={manejarCambioEntrada} />
                 </div>
                 <div className="grupo-formulario">
                   <label>Longitud (Google Maps)</label>
-                  <input type="number" step="any" name="longitud" className="campo-entrada" value={datosFormulario.longitud} onChange={manejarCambioEntrada} />
+                  <input type="text" name="longitud" className="campo-entrada" placeholder="Ej: -58.381592" value={datosFormulario.longitud} onChange={manejarCambioEntrada} />
                 </div>
               </div>
               <div className="grupo-formulario ancho-completo">

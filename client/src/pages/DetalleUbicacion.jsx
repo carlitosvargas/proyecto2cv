@@ -37,10 +37,12 @@ const DetalleUbicacion = () => {
         className="hero-detalle" 
         style={{ backgroundImage: `url(${ubicacion.url_imagen || 'https://images.unsplash.com/photo-1517713982677-4b66332f98de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'})` }}
       >
-        <div className="contenedor capa-hero">
+        <div className="contenedor capa-top">
           <Link to="/" className="btn-volver">
             <ArrowLeft size={20} /> Volver a explorar
           </Link>
+        </div>
+        <div className="contenedor capa-hero">
           <span className="etiqueta-detalle">{ubicacion.categoria}</span>
           <h1 className="titulo-detalle">{ubicacion.nombre}</h1>
           <p className="direccion-detalle">
