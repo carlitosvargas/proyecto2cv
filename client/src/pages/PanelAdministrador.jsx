@@ -213,6 +213,7 @@ const PanelAdministrador = () => {
                     <option value="Gastronomía">Gastronomía</option>
                     <option value="Historia">Historia</option>
                     <option value="Aventura">Aventura</option>
+                    <option value="Alquileres">Alquileres</option>
                   </select>
                 </div>
                 <div className="grupo-formulario">
