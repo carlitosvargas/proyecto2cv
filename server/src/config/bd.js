@@ -55,6 +55,7 @@ const inicializarBD = async () => {
         longitud DECIMAL(11, 8),
         direccion VARCHAR(255),
         url_imagen VARCHAR(255),
+        imagenes_extra JSON,
         fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       )

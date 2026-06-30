@@ -57,6 +57,29 @@ const DetalleUbicacion = () => {
             <h2>Acerca de este lugar</h2>
             <p className="descripcion-detalle">{ubicacion.descripcion}</p>
           </div>
+          
+          {(() => {
+            let imagenesExtras = [];
+            try {
+              if (ubicacion.imagenes_extra) {
+                imagenesExtras = typeof ubicacion.imagenes_extra === 'string' ? JSON.parse(ubicacion.imagenes_extra) : ubicacion.imagenes_extra;
+              }
+            } catch (e) {}
+            
+            if (imagenesExtras.length > 0) {
+              return (
+                <div className="card tarjeta-info" style={{ marginTop: '2rem' }}>
+                  <h2>Galería de Imágenes</h2>
+                  <div className="galeria-imagenes" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+                    {imagenesExtras.map((img, idx) => (
+                      <img key={idx} src={img} alt={`Galeria ${idx}`} style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '0.5rem', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })()}
         </div>
 
         <div className="barra-lateral-detalle">

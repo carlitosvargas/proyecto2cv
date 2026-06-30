@@ -23,14 +23,32 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
   text-decoration: none;
+  letter-spacing: -0.5px;
+  transition: transform 0.2s ease;
+}
+
+.logo-barra:hover {
+  transform: scale(1.02);
 }
 
 .logo-barra .icono {
   color: var(--primary);
+  filter: drop-shadow(0 2px 4px rgba(14, 165, 233, 0.3));
+}
+
+.texto-logo {
+  font-family: 'Inter', sans-serif;
+}
+
+.texto-logo .destacado {
+  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .enlaces-barra {
@@ -45,4 +63,27 @@
   gap: 0.5rem;
   font-weight: 500;
   color: var(--text-secondary);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - BARRA DE NAVEGACION
+   ========================================= */
+@media (max-width: 600px) {
+  .logo-barra {
+    font-size: 1.2rem;
+  }
+
+  .enlaces-barra {
+    gap: 0.5rem;
+  }
+
+  .enlaces-barra .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Ocultar el nombre de usuario en móviles para ahorrar espacio */
+  .perfil-usuario span {
+    display: none;
+  }
 }

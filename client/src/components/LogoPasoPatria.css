@@ -1,0 +1,54 @@
+.logo-paso-patria {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -1px;
+  margin-left: 0.75rem;
+}
+
+.logo-linea-1 {
+  display: flex;
+  align-items: baseline;
+  margin-left: 1.8em;
+  font-size: 1.1em;
+}
+
+.logo-linea-2 {
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.4em;
+}
+
+.logo-dela {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.35em;
+  color: var(--text-primary);
+  margin-right: 0.3em;
+  margin-bottom: 0.1em;
+  line-height: 1;
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Colores extraídos de la imagen */
+.c-rojo { color: #D91023; font-size: 1.4em; }
+.c-naranja { color: #F59B00; text-transform: uppercase; }
+.c-verde-claro { color: #8CC63F; text-transform: uppercase; }
+.c-verde-oscuro { color: #2B9B48; text-transform: uppercase; }
+.c-celeste { color: #52B4E5; text-transform: uppercase; }
+.c-azul-claro { color: #2271B5; text-transform: uppercase; }
+.c-azul-medio { color: #004B87; text-transform: uppercase; }
+.c-azul-oscuro { color: #003366; text-transform: uppercase; }
+
+/* =========================================
+   RESPONSIVE DESIGN - LOGO COLORIDO
+   ========================================= */
+@media (max-width: 600px) {
+  .logo-paso-patria {
+    font-size: 0.85em; /* Escala todo el logo proporcionalmente */
+  }
+}

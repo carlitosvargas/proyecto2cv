@@ -3,7 +3,7 @@
 }
 
 .seccion-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://d3b5jqy5xuub7g.cloudfront.net/wp-content/uploads/2022/01/Fotograf%C3%ADa-de-Playa-Punta-Mitre-en-Paso-de-la-Patria.jpg') center/cover;
   padding: 6rem 0;
   text-align: center;
   color: white;
@@ -14,7 +14,7 @@
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .contenido-hero p {
@@ -89,7 +89,7 @@
 
 .cuadricula-ubicaciones {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -178,4 +178,31 @@
   color: var(--text-secondary);
   margin-bottom: 1rem;
   opacity: 0.5;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - INICIO
+   ========================================= */
+@media (max-width: 768px) {
+  .seccion-hero {
+    padding: 4rem 1rem;
+  }
+
+  .contenido-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .contenido-hero p {
+    font-size: 1.1rem;
+  }
+
+  .entrada-busqueda {
+    font-size: 1rem;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+  }
+
+  .cuadricula-ubicaciones {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }

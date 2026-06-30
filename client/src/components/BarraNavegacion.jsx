@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Map, LogOut, Settings, User } from 'lucide-react';
 import { usarAutenticacion } from '../context/ContextoAutenticacion';
+import LogoPasoPatria from './LogoPasoPatria';
 import './BarraNavegacion.css';
 
 const BarraNavegacion = () => {
@@ -16,8 +17,7 @@ const BarraNavegacion = () => {
     <nav className="barra-navegacion">
       <div className="contenedor contenedor-barra">
         <Link to="/" className="logo-barra">
-          <Map className="icono" />
-          <span>Guía Ciudad</span>
+          <LogoPasoPatria />
         </Link>
         <div className="enlaces-barra">
           {usuario ? (

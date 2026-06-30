@@ -41,11 +41,11 @@ exports.obtenerUbicacionPorId = async (peticion, respuesta) => {
 
 // Crear una nueva ubicación
 exports.crearUbicacion = async (peticion, respuesta) => {
-  const { nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen } = peticion.body;
+  const { nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen, imagenes_extra } = peticion.body;
   try {
     const [resultado] = await conexionPool.query(
-      'INSERT INTO ubicaciones (nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen]
+      'INSERT INTO ubicaciones (nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen, imagenes_extra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+      [nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen, JSON.stringify(imagenes_extra || [])]
     );
     respuesta.status(201).json({ id: resultado.insertId, mensaje: 'Ubicación creada exitosamente' });
   } catch (error) {
@@ -56,11 +56,11 @@ exports.crearUbicacion = async (peticion, respuesta) => {
 
 // Actualizar una ubicación existente
 exports.actualizarUbicacion = async (peticion, respuesta) => {
-  const { nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen } = peticion.body;
+  const { nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen, imagenes_extra } = peticion.body;
   try {
     await conexionPool.query(
-      'UPDATE ubicaciones SET nombre = ?, descripcion = ?, categoria = ?, latitud = ?, longitud = ?, direccion = ?, url_imagen = ? WHERE id = ?',
-      [nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen, peticion.params.id]
+      'UPDATE ubicaciones SET nombre = ?, descripcion = ?, categoria = ?, latitud = ?, longitud = ?, direccion = ?, url_imagen = ?, imagenes_extra = ? WHERE id = ?',
+      [nombre, descripcion, categoria, latitud, longitud, direccion, url_imagen, JSON.stringify(imagenes_extra || []), peticion.params.id]
     );
     respuesta.json({ mensaje: 'Ubicación actualizada exitosamente' });
   } catch (error) {

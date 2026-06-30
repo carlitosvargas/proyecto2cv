@@ -16,7 +16,8 @@ const PanelAdministrador = () => {
     latitud: '',
     longitud: '',
     direccion: '',
-    url_imagen: ''
+    url_imagen: '',
+    imagenes_extra: []
   });
 
   const obtenerUbicaciones = async () => {
@@ -66,10 +67,47 @@ const PanelAdministrador = () => {
       latitud: ubicacion.latitud || '',
       longitud: ubicacion.longitud || '',
       direccion: ubicacion.direccion,
-      url_imagen: ubicacion.url_imagen || ''
+      url_imagen: ubicacion.url_imagen || '',
+      imagenes_extra: typeof ubicacion.imagenes_extra === 'string' ? JSON.parse(ubicacion.imagenes_extra) : (ubicacion.imagenes_extra || [])
     });
     setIdEdicion(ubicacion.id);
     setMostrarModal(true);
+  };
+
+  const manejarSubidaImagenes = async (e) => {
+    const archivos = e.target.files;
+    if (!archivos || archivos.length === 0) return;
+
+    const formData = new FormData();
+    for (let i = 0; i < archivos.length; i++) {
+      formData.append('imagenes', archivos[i]);
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      const respuesta = await axios.post('http://localhost:5000/api/subida', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      const nuevasUrls = respuesta.data.urls.map(url => `http://localhost:5000${url}`);
+      setDatosFormulario(prev => ({
+        ...prev,
+        imagenes_extra: [...prev.imagenes_extra, ...nuevasUrls]
+      }));
+    } catch (error) {
+      console.error('Error al subir imágenes:', error);
+      alert('Hubo un error al subir las imágenes');
+    }
+  };
+
+  const eliminarImagenExtra = (index) => {
+    setDatosFormulario(prev => ({
+      ...prev,
+      imagenes_extra: prev.imagenes_extra.filter((_, i) => i !== index)
+    }));
   };
 
   const manejarEliminacion = async (id) => {
@@ -87,7 +125,7 @@ const PanelAdministrador = () => {
   };
 
   const reiniciarFormulario = () => {
-    setDatosFormulario({ nombre: '', descripcion: '', categoria: '', latitud: '', longitud: '', direccion: '', url_imagen: '' });
+    setDatosFormulario({ nombre: '', descripcion: '', categoria: '', latitud: '', longitud: '', direccion: '', url_imagen: '', imagenes_extra: [] });
   };
 
   const abrirNuevoModal = () => {
@@ -182,8 +220,20 @@ const PanelAdministrador = () => {
                   <input type="text" name="direccion" className="campo-entrada" value={datosFormulario.direccion} onChange={manejarCambioEntrada} required />
                 </div>
                 <div className="grupo-formulario">
-                  <label>URL de la Imagen</label>
+                  <label>URL de la Imagen (Portada)</label>
                   <input type="text" name="url_imagen" className="campo-entrada" value={datosFormulario.url_imagen} onChange={manejarCambioEntrada} />
+                </div>
+                <div className="grupo-formulario">
+                  <label>Imágenes Adicionales</label>
+                  <input type="file" multiple accept="image/*" className="campo-entrada" onChange={manejarSubidaImagenes} />
+                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+                    {datosFormulario.imagenes_extra.map((img, idx) => (
+                      <div key={idx} style={{ position: 'relative' }}>
+                        <img src={img} alt="extra" style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '4px' }} />
+                        <button type="button" onClick={() => eliminarImagenExtra(idx)} style={{ position: 'absolute', top: -5, right: -5, background: 'red', color: 'white', borderRadius: '50%', width: '20px', height: '20px', fontSize: '12px', border: 'none', cursor: 'pointer' }}>x</button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="grupo-formulario">
                   <label>Latitud (Google Maps)</label>
